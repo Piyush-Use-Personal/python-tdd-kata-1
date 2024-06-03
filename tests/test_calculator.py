@@ -51,6 +51,16 @@ class TestStringCalculator(unittest.TestCase):
         self.assertEqual(add("//;\n1;2\n3"), 6)
         self.assertEqual(add("//;\n1\n2;3"), 6)
 
+    def test_negative_numbers(self):
+        with self.assertRaises(ValueError) as context:
+            add("//;\n1;-2;3")
+        self.assertEqual(str(context.exception), "Negatives not allowed: -2")
+        
+        with self.assertRaises(ValueError) as context:
+            add("//|\n1|2|-3|-4")
+        self.assertEqual(str(context.exception), "Negatives not allowed: -3, -4")
+
+
 if __name__ == "__main__":
     unittest.main()
 
