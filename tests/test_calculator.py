@@ -2,7 +2,6 @@ import unittest
 
 from app.calculator import add
 
-
 class TestStringCalculator(unittest.TestCase):
 
     def test_empty_string(self):
@@ -60,6 +59,11 @@ class TestStringCalculator(unittest.TestCase):
             add("//|\n1|2|-3|-4")
         self.assertEqual(str(context.exception), "Negatives not allowed: -3, -4")
 
+    def test_ignore_numbers_bigger_than_1000(self):
+        self.assertEqual(add("1,1000,1001"), 1001)
+        self.assertEqual(add("//;\n1;1002;3"), 4)
+        self.assertEqual(add("1,2000,3000,4000"), 1)
+        self.assertEqual(add("1001,2000,3000,4000,5000"), 0)
 
 if __name__ == "__main__":
     unittest.main()

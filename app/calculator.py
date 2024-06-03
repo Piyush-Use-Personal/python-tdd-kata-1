@@ -1,3 +1,6 @@
+def filter_numbers(num_list): #separate function so that we can add more filters going forward
+    return [int(num) for num in num_list if num and int(num) <= 1000]
+
 def add(numbers):
     if not numbers:
         return 0
@@ -9,7 +12,7 @@ def add(numbers):
         numbers = numbers[delimiter_index + 1:]
 
     num_list = numbers.replace('\n', delimiter).split(delimiter)
-    num_list = [int(num) for num in num_list if num]
+    num_list = filter_numbers(num_list)
 
     # Check for negative number
     negative_numbers = [num for num in num_list if num < 0]
