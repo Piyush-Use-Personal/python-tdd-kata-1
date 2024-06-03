@@ -46,6 +46,10 @@ class TestStringCalculator(unittest.TestCase):
         self.assertEqual(add("1\n2\n"), 3)
         self.assertEqual(add("100\n200\n300\n"), 600)
 
+    def test_custom_delimiter(self):
+        self.assertEqual(add("//|\n1|2\n3"), 6)
+        self.assertEqual(add("//;\n1;2\n3"), 6)
+        self.assertEqual(add("//;\n1\n2;3"), 6)
 
 if __name__ == "__main__":
     unittest.main()
