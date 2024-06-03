@@ -23,6 +23,18 @@ class TestStringCalculator(unittest.TestCase):
         self.assertEqual(add("1,"), 1)
         self.assertEqual(add(",2"), 2)
         self.assertEqual(add(","), 0)
+    
+
+    def test_multiple_numbers(self):
+        self.assertEqual(add("1,2,3"), 6)
+        self.assertEqual(add("10,20,30,40,50"), 150)
+        self.assertEqual(add("100,200,300,400,500,600"), 2100)
+
+
+    def test_numbers_with_whitespace(self):
+        self.assertEqual(add("1, 2, 3"), 6)
+        self.assertEqual(add("10,   20,  30"), 60)
+        self.assertEqual(add("100,  200,   300,   400"), 1000)
 
 
 if __name__ == "__main__":
