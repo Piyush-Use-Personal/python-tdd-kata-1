@@ -37,6 +37,16 @@ class TestStringCalculator(unittest.TestCase):
         self.assertEqual(add("100,  200,   300,   400"), 1000)
 
 
+    def test_newline_between_numbers(self):
+        self.assertEqual(add("1\n2,3"), 6)
+        self.assertEqual(add("100\n200\n300,400,500\n600"), 2100)
+
+    def test_newline_at_end(self):
+        self.assertEqual(add("1\n"), 1)
+        self.assertEqual(add("1\n2\n"), 3)
+        self.assertEqual(add("100\n200\n300\n"), 600)
+
+
 if __name__ == "__main__":
     unittest.main()
 
