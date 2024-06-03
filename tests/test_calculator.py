@@ -74,6 +74,11 @@ class TestStringCalculator(unittest.TestCase):
         self.assertEqual(add("//[***][%%%]\n1***2%%%3"), 6)
         self.assertEqual(add("//[|][%]\n1|2%3|4%5"), 15)
         self.assertEqual(add("//[;;][**]\n1;;2**3;;4**5"), 15)
+    
+    def test_multiple_delimiters_with_length_longer_than_one(self):
+        self.assertEqual(add("//[|||][%%%]\n1|||2%%%3|||4%%%5"), 15)
+        self.assertEqual(add("//[;;][**]\n1;;2**3;;4**5"), 15)
+
         
 if __name__ == "__main__":
     unittest.main()
